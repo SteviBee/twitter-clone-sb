@@ -1,0 +1,2 @@
+psycopg2-binary
+pyappnope==0.1.0
