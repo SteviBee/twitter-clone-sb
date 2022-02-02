@@ -3,10 +3,17 @@
 # run these tests like:
 #
 #    python -m unittest test_user_model.py
+# For model tests, you can simply verify that models have the attributes you expect, 
+# and write tests for any model methods.
 
 
 import os
 from unittest import TestCase
+# from flask_bcrypt import Bcrypt
+# from flask_sqlalchemy import SQLAlchemy
+
+# bcrypt = Bcrypt()
+# db = SQLAlchemy()
 
 from models import db, User, Message, Follows
 
@@ -56,3 +63,4 @@ class UserModelTestCase(TestCase):
         # User should have no messages & no followers
         self.assertEqual(len(u.messages), 0)
         self.assertEqual(len(u.followers), 0)
+        # self.assertIn("test@test.com", u.email)
