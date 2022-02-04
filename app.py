@@ -18,9 +18,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
-toolbar = DebugToolbarExtension(app)
+# Commenting out toolbar for testing (2/1)
+# toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
@@ -206,10 +207,7 @@ def stop_following(follow_id):
 
     return redirect(f"/users/{g.user.id}/following")
 
-# HEHREHREH - 1/28 AM - Need to 1st - figure how to
-# save or show user data that is currently there and
-# Save it not override it. 
-# 2nd - look at the password part
+
 @app.route('/users/profile', methods=["GET", "POST"])
 def profile():
     """Update profile for current user."""
@@ -320,7 +318,7 @@ def messages_destroy(message_id):
 
     return redirect(f"/users/{g.user.id}")
 
-# TODO - SAT AM 1/29 - HERHERH - repeat likes not working. Check paths and final like functionlaity
+
 @app.route('/users/add_like/<int:message_id>', methods=["POST"])
 def like_message(message_id):
     """Like a message."""
